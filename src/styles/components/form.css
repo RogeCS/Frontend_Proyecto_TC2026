@@ -1,0 +1,7 @@
+.form__container{
+  display: relative;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 30px;
+}
