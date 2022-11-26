@@ -1,4 +1,5 @@
 import React from "react";
+import Hero from '../components/hero.jsx'
 import Form from "../components/form.jsx";
 
 import "../styles/components/index.css";
@@ -6,7 +7,7 @@ import "../styles/components/index.css";
 const Index = () => {
   return (
     <div>
-      <h1>It's alive</h1>
+      <Hero></Hero>
       <Form></Form>
     </div>
   );

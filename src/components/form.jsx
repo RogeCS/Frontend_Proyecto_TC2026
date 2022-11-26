@@ -1,7 +1,8 @@
 import React from "react";
-import Input from "./input.jsx"
+import Input from "./input.jsx";
+import Button from "./Button.jsx";
 
-import "../styles/components/form.css"
+import "../styles/components/form.css";
 
 
 class Form extends React.Component {
@@ -28,26 +29,49 @@ class Form extends React.Component {
   render() {
     return (
       <form className="form__container" onSubmit={this.handleSubmit}>
-        <Input
-          label="Name"
-          type="input"
-          value={this.state.value}
-          onChange={this.handleChange}
-          placeholder="name"
-          name="name"
-          id="name"
-        />
-        <Input
-          label="Surname"
-          type="input"
-          value={this.state.value}
-          onChange={this.handleChange}
-          placeholder="surname"
-          name="surname"
-          id="surname"
-        />
+        <div className="form__inputs">
+          <Input
+            label="Name"
+            type="input"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="name"
+            name="name"
+            id="name"
+          />
+          <Input
+            label="Surname"
+            type="input"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="surname"
+            name="surname"
+            id="surname"
+          />
 
-        <input type="submit" value="Submit" />
+          <Input
+            label="Surname"
+            type="input"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="surname"
+            name="surname"
+            id="surname"
+          />
+
+          <Input
+            label="Surname"
+            type="input"
+            value={this.state.value}
+            onChange={this.handleChange}
+            placeholder="surname"
+            name="surname"
+            id="surname"
+          />
+        </div>
+        <div className="form__button" >
+          <Button type="submit" value="Enviar" />
+        </div>
       </form>
     );
   }

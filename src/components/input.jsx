@@ -11,11 +11,15 @@ const Input = ({
     name, 
     id 
   }) => (
-
-  <label className="input">
-    <input className="input__field" type={type} placeholder={placeholder} value={value} onChange={onChange} name={name} id={id} />
-    <span className="input__label">{label}</span>
-  </label>
+<div>
+    <div className="group">      
+      <input type={type} value={value} onChange={onChange} name={name} id={id} required />
+      <span className="highlight"></span>
+      <span className="bar"></span>
+      <label>{label}</label>
+    </div>
+    
+</div>
 
   
 );

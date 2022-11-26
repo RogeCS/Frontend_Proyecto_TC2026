@@ -10,6 +10,8 @@
   --color-light: white;
   --color-dark: #212121;
   --color-signal: #055C9D;
+  --color-blue: #055C9D;
+  --color-navy-blue: #003060;
   --color-background: var(--color-light);
   --color-text: var(--color-dark);
   --color-accent: var(--color-signal);
@@ -35,4 +37,10 @@ body {
   color: black;
   height: 100%;
   width: 100%;
+}
+
+.grid_container {
+  display: grid;
+  margin: auto;
+  max-width: 1200px;
 }
