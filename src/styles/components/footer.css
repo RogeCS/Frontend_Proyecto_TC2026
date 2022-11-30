@@ -1,0 +1,27 @@
+.footer{
+  margin-top: 100px;
+  width: 100vw;
+  background-color: var(--color-navy-blue);
+}
+
+.integrantes{
+  --auto-grid-min-size: 300px;
+  place-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 2rem;
+  color: white;
+  padding: 40px 30px;
+}
+
+.footer__title{
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.8rem;
+  font-weight: 100;
+}
+
+.integrantes p{
+  text-align: center;
+}

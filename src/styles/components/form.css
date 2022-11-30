@@ -14,5 +14,14 @@
 }
 
 .form__button{
-  align-self: flex-end;
+  display: flex;
+  gap: 30px;
+}
+
+.after__form{
+  margin-top: 30px;
+}
+
+.hide{
+  display: none;
 }

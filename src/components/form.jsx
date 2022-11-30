@@ -8,9 +8,16 @@ import "../styles/components/form.css";
 class Form extends React.Component {
   constructor(props) {
     super(props);
+    this.answerRef = React.createRef(); 
     this.state = {
-      name: '',
-      surname: '',
+      pregnancies: '',
+      glucose: '',
+      bloodPressure: '',
+      skinThickness: '',
+      insulin: '',
+      BMI: '',
+      DPF: '',
+      age: ''
   };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,57 +29,94 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name + ' ' + this.state.surname);
+    console.log(this.state)
+    this.answerRef.current.classList.remove('hide');
     event.preventDefault();
   }
 
   render() {
     return (
-      <form className="form__container" onSubmit={this.handleSubmit}>
-        <div className="form__inputs">
-          <Input
-            label="Name"
-            type="input"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="name"
-            name="name"
-            id="name"
-          />
-          <Input
-            label="Surname"
-            type="input"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="surname"
-            name="surname"
-            id="surname"
-          />
+      <div>
+        <form className="form__container" onSubmit={this.handleSubmit}>
+          <div className="form__inputs">
+            <Input
+              label="Pregnancies"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="pregnancies"
+              id="pregnancies"
+            />
+            <Input
+              label="Glucose"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="glucose"
+              id="glucose"
+            />
 
-          <Input
-            label="Surname"
-            type="input"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="surname"
-            name="surname"
-            id="surname"
-          />
+            <Input
+              label="Blood Pressure"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="bloodPressure"
+              id="bloodPressure"
+            />
 
-          <Input
-            label="Surname"
-            type="input"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="surname"
-            name="surname"
-            id="surname"
-          />
+            <Input
+              label="Skin Thickness"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="skinThickness"
+              id="skinThickness"
+            />
+            <Input
+              label="Insuline"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="insuline"
+              id="insuline"
+            />
+            <Input
+              label="BMI"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="BMI"
+              id="BMI"
+            />
+
+            <Input
+              label="Diabetes Pedigree Function"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="DPF"
+              id="DPF"
+            />
+
+            <Input
+              label="Age"
+              type="input"
+              value={this.state.value}
+              onChange={this.handleChange}
+              name="age"
+              id="age"
+            />
+          </div>
+          <div className="form__button" >
+            <Button type="submit" value="Guess"/>
+            <Button type="submit" value="Upload" />
+          </div>
+        </form>
+        <div ref={this.answerRef} className="after__form hide">  
+          This person ___ diabetes.
         </div>
-        <div className="form__button" >
-          <Button type="submit" value="Enviar" />
-        </div>
-      </form>
+      </div>
     );
   }
 }

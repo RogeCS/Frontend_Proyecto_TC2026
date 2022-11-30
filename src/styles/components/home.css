@@ -1,0 +1,21 @@
+.main{
+  min-height: 100vh;
+}
+
+.home__body{
+  margin: 30px 20px;
+}
+
+.home__info{
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.home__info h1{
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.home__info p{
+  font-size: 1.1rem;
+}
