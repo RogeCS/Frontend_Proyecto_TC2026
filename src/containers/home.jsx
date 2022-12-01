@@ -13,12 +13,7 @@ const Index = () => {
   const [accuracy, setAccuracy] = useState();
 
   function handleClick(e) {
-    axios.post(`${config.modelURL}/trainDiabetes`, {}, {
-        headers: {
-          "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': true,
-        }
-      })
+    axios.get(`${config.modelURL}/trainDiabetes`)
         .then((response) => {
           console.log(response.data)
           setAccuracy(response.data.Resultado)
