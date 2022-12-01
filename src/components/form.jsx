@@ -22,35 +22,35 @@ class Form extends React.Component {
       DPF: 0,
       age: 0,
       class: 0,
+      upload: false,
+      srvAnswer: 0,
   };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getData = this.getData.bind(this);
   }
 
-  getData = async () => {
-    await axios.post('http://localhost:3000/diabetes/createRecord', {
-      mydata
-    })
-}
 
   handleChange(event) {
     this.setState({[event.target.name]: parseInt(event.target.value)});
   }
 
   handleCheck(event) {
-    this.upload = event.target.value
+    this.setState({upload: event.target.checked})
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.pregnancies)
-    if(this.upload){
-      const mydata = JSON.stringify(this.state)
-      console.log(typeof mydata)
-      axios.post('http://localhost:3000/diabetes/createRecord', mydata, {
+    console.log(this.state)
+
+    if(this.state.upload){
+      const mydataraw = this.state
+      delete mydataraw.upload;
+      delete mydataraw.srvAnswer;
+      const mydata = JSON.stringify(mydataraw);
+    
+      axios.post('http://54.89.251.107:8083/diabetes/createRecord', mydata, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -59,6 +59,21 @@ class Form extends React.Component {
         .catch((err) => console.log(err))
 
     }
+
+    const modelraw = this.state
+    delete modelraw.upload;
+    delete modelraw.srvAnswer;
+    delete modelraw.class;
+    const mydatamodel = JSON.stringify(modelraw);
+    axios.post('http://54.226.74.148:8080/modeloDiabetes', mydatamodel, {
+        headers: {
+          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': true,
+        }
+      })
+        .then((response) => console.log(response.data))
+        .catch((err) => console.log(err))
+
     this.answerRef.current.classList.remove('hide');
   }
 
@@ -143,6 +158,7 @@ class Form extends React.Component {
               onChange={this.handleChange}
               name="class"
               id="class"
+              disabled={!this.state.upload}
             />
 
             <Checkbox onChange={this.handleCheck} name="upload">Upload to database</Checkbox>
@@ -152,7 +168,7 @@ class Form extends React.Component {
           </div>
         </form>
         <div ref={this.answerRef} className="after__form hide">  
-          This person ___ diabetes.
+          This person {this.state.srvAnswer ? "has": "don't have"} diabetes.
         </div>
       </div>
     );
