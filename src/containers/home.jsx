@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Hero from '../components/hero.jsx'
 import Form from "../components/form.jsx";
-import {config} from "../config";
+import { config } from "../config";
 
 import "../styles/components/home.css";
 import Button from "../components/Button.jsx";
@@ -13,7 +13,6 @@ const Index = () => {
   const [accuracy, setAccuracy] = useState();
 
   function handleClick(e) {
-    console.log("hola")
     axios.post(`${config.modelURL}/trainDiabetes`, {}, {
         headers: {
           "Content-Type": "application/json",
