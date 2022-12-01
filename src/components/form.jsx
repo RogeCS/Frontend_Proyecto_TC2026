@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Input from "./input.jsx";
 import Button from "./Button.jsx";
+import {config} from "../config";
 
 import "../styles/components/form.css";
 import Checkbox from "./checkbox.jsx";
@@ -50,7 +51,7 @@ class Form extends React.Component {
       delete mydataraw.srvAnswer;
       const mydata = JSON.stringify(mydataraw);
     
-      axios.post('http://54.89.251.107:8083/diabetes/createRecord', mydata, {
+      axios.post(`${config.backURL}/diabetes/createRecord`, mydata, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -65,13 +66,16 @@ class Form extends React.Component {
     delete modelraw.srvAnswer;
     delete modelraw.class;
     const mydatamodel = JSON.stringify(modelraw);
-    axios.post('http://54.226.74.148:8080/modeloDiabetes', mydatamodel, {
+    axios.post(`${config.modelURL}/modeloDiabetes`, mydatamodel, {
         headers: {
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': true,
         }
       })
-        .then((response) => console.log(response.data))
+        .then((response) => {
+          console.log(response.data)
+          this.setState({srvAnswer: response.data.Resultado})
+        })
         .catch((err) => console.log(err))
 
     this.answerRef.current.classList.remove('hide');
@@ -168,7 +172,7 @@ class Form extends React.Component {
           </div>
         </form>
         <div ref={this.answerRef} className="after__form hide">  
-          This person {this.state.srvAnswer ? "has": "don't have"} diabetes.
+          This person {parseInt(this.state.srvAnswer) ? "has" : "doesn't have"} diabetes.
         </div>
       </div>
     );
