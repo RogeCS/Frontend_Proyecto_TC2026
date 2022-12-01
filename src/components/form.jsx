@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import Input from "./input.jsx";
-import Button from "./Button.jsx";
+import Button from "./button.jsx";
 import {config} from "../config";
 
 import "../styles/components/form.css";

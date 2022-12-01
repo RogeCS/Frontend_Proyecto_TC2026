@@ -5,7 +5,7 @@ import Form from "../components/form.jsx";
 import { config } from "../config";
 
 import "../styles/components/home.css";
-import Button from "../components/Button.jsx";
+import Button from "../components/button.jsx";
 import Footer from "../components/footer.jsx";
 import Update from "../components/update.jsx";
 

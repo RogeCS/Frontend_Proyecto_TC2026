@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from "./Button";
+import Button from "./button";
 import Input from "./input";
 import { get } from "../methods"
 import { config } from "../config"
